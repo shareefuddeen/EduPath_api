@@ -13,7 +13,11 @@ class CustomUser(AbstractUser):
 class Institution(models.Model):
     institution_name = models.CharField(max_length=60)
     institution_description = models.TextField(null=True,blank=True)
-
+    institution_body = models.TextField(null=True,blank=True)
+    location = models.TextField(null=True,blank=True)
+    institution_logo = models.ImageField(upload_to="logos",null=True,blank=True)
+    institution_website = models.URLField(null=True,blank=True)
+    
 
     def __str__(self):
         return self.institution_name

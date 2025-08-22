@@ -75,7 +75,7 @@ class InstitutionView(APIView):
                 institution = Institution.objects.all()
             except Exception as e:
                 return Response(serializer.errors,status=status.HTTP_404_NOT_FOUND)
-            serializer = InstitutionSerializer(institution,many=True)
+            serializer = InstitutionSerializer(institution,many=True,context={'request': request})
             institution = serializer.data
             cache.set(institution,"institution")
         return Response(data=institution,status=status.HTTP_200_OK)

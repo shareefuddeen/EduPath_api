@@ -35,9 +35,10 @@ class ProgamSerializer(serializers.ModelSerializer):
 
 class InstitutionSerializer(serializers.ModelSerializer):
     programs = ProgamSerializer(many=True,read_only=True)
+    institution_logo = serializers.ImageField(use_url=True)
     class Meta:
         model = Institution
-        fields = ['institution_name','programs']
+        fields = "__all__"
 
 class OptionSerializer(serializers.ModelSerializer):
     class Meta:
